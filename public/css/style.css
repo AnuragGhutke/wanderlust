@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Outfit:wght@100..900&display=swap');
+
+
 body {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Lato", sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -15,9 +18,9 @@ h3 {
 
 /* Navbar */
 .navbar {
-    height: 6.5rem;
+    height: 5.2rem;
     background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(43, 43, 43, 0.1);
 }
 
 .navbar-brand span {
@@ -90,11 +93,16 @@ h3 {
 .newLisBorder {
     border: 1px solid rgba(0, 0, 0, 0.132);
     border-radius: 12px;
-    padding: 2rem;
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    div.newLisBorder {
+        padding: 2rem;
+    }
 }
 
 .listing-link {
-
     text-decoration: none;
 }
 
@@ -102,7 +110,13 @@ h3 {
 .editListing {
     border: 1px solid rgba(0, 0, 0, 0.132);
     border-radius: 12px;
-    padding: 2rem;
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    div.editListing {
+        padding: 2rem;
+    }
 }
 
 .card-img-overlay {
@@ -145,19 +159,22 @@ h3 {
 }
 
 .show-card {
-    padding-right: 0;
-    padding-left: 0;
+    padding: 1rem;
 }
-
 
 /* review card */
 .review-card {
     border: 1px solid rgba(255, 0, 0, 0.135);
 }
 
+.review-form h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
 /* edit img */
 .editImg img {
-    width: 250px;
+    width: 100%;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
@@ -168,15 +185,33 @@ h3 {
 .signUp {
     border: 1px solid rgba(0, 0, 0, 0.132);
     border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    padding: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
 }
+
+.loginHeading {
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.signupHeading {
+    font-weight: bold;
+}
+
+
 
 .loginBtn {
     font-size: 1rem;
     font-weight: bolder;
 }
+
+
+
 
 .filters {
     position: relative;
@@ -246,23 +281,6 @@ h3 {
     }
 }
 
-/* 
-.tax-info {
-    color: #00000038;
-    display: none;
-}
-
-.tax-toggle {
-    display: flex;
-    align-items: center;
-    width: 200px;
-    height: 50px;
-    border: 1px solid rgba(0, 0, 0, 0.176);
-    border-radius: 1rem;
-    padding: 1rem 1.4rem;
-    margin-top: 2rem;
-    text-align: center;
-} */
 
 .navbar-nav.search {
     margin-left: auto;
@@ -298,12 +316,32 @@ h3 {
     color: white;
 }
 
+.navbar {
+    padding-top: 0.2rem !important;
+    padding-bottom: 0.2rem !important;
+}
+
+.navbar-toggler {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 0.15rem 0.3rem !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 .navbar-collapse .search-btn:hover,
 .navbar-collapse .search-btn:focus,
 .navbar-collapse .search-btn:active {
     background-color: #fe424d !important;
     color: #121212 !important;
 }
+
 
 
 @media (max-width:768px) {
@@ -352,6 +390,8 @@ h3 {
 
     .search-wrapper .search-input {
         border: none;
+        outline: none;
+        box-shadow: none;
     }
 
     .navbar-collapse .search-btn:hover,

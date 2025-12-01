@@ -2,9 +2,6 @@ if (process.env.NODE_ENV != 'production') {
     require('dotenv').config();
 }
 
-
-
-
 //npm packages
 const express = require('express');
 const mongoose = require('mongoose');
@@ -40,6 +37,7 @@ mongoose.connect(dbUrl, {
     .catch((err) => console.log(err));
 
 //all middlewares
+app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }))

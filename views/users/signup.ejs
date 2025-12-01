@@ -1,49 +1,34 @@
 <% layout('/layouts/boilerplate') %>
 
-    <div class="row mt-3 ">
+    <h2 class="text-center mb-4 mt-4 signupHeading">Signup on Wanderlust</h2>
 
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto signUp ">
+        <form action="/signup" method="post" novalidate class="needs-validation">
+            <!-- username -->
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" id="username" placeholder="enter username" class="form-control"
+                    required>
+                <div class="valid-feedback">looks good!</div>
+            </div>
 
-        <h2 class="col-6 offset-3 mt-3">Signup on Wanderlust</h2>
+            <!-- email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" name="email" id="email" placeholder="ex: abc123@gmail.com" class="form-control"
+                    required>
+            </div>
 
-        <div class="col-6 offset-3 signUp">
+            <!-- password -->
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="text" name="password" id="password" placeholder="enter password" class="form-control"
+                    required>
+            </div>
 
-            <form action="/signup" method="post" novalidate class="needs-validation">
-
-                <!-- username -->
-                <div class="mb-3">
-
-                    <label for="username" class="form-label">Username</label>
-
-                    <input type="text" name="username" id="username" placeholder="enter  username" class="form-control"
-                        required>
-
-                    <div class="valid-feedback">looks good!</div>
-
-                </div>
-
-                <!-- email -->
-                <div class="mb-3">
-
-                    <label for="email" class="form-label">Email</label>
-
-                    <input type="text" name="email" id="email" placeholder="ex: abc123@gmail.com" class="form-control"
-                        required>
-
-                </div>
-
-                <!-- password -->
-                <div class="mb-3">
-
-                    <label for="password" class="form-label">Password</label>
-
-                    <input type="text" name="password" id="password" placeholder="enter password" class="form-control"
-                        required>
-
-                </div>
-
-                <!-- submit -->
+            <!-- submit -->
+            <div class="text-center">
                 <button class="btn btn-outline-primary">Signup</button>
-
-            </form>
-        </div>
+            </div>
+        </form>
     </div>

@@ -1,15 +1,32 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
-const initdata = require('./data.js');
+const { data } = require('./data.js');
 const Listing = require('../models/Listing.js');
 
-mongoose.connect('mongodb://127.0.0.1:27017/wanderlust')
-    .then(() => console.log('connected to DB..'))
-    .catch((err) => console.log(err));
+mongoose.connect(process.env.ATLAS_URL)
+    .then(() => console.log('Connected to DB..'))
+    .catch(err => console.log('DB connection error:', err));
 
 const initDB = async () => {
-    await Listing.deleteMany({});
-    initdata.data = initdata.data.map((obj) => ({ ...obj, owner: '68d53756dc3db237b09dd1a7' }));
-    await Listing.insertMany(initdata.data);
-    console.log('data was initalized.')
+    try {
+        await Listing.deleteMany({});
+        console.log("Old listings deleted");
+
+        const finalData = data.map(obj => ({
+            ...obj,
+            owner: "68da5a0dde30e18d8b224cd7"
+        }));
+
+        console.log("First record to insert:", finalData[0]);
+
+        await Listing.insertMany(finalData);
+        console.log("New listings inserted");
+
+    } catch (err) {
+        console.log("Insert error:", err);
+    } finally {
+        mongoose.connection.close();
+    }
 };
+
 initDB();

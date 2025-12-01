@@ -2,19 +2,21 @@
 
     <body>
         <!-- heading -->
-        <div class="row mt-3">
-            <div class="col-6 offset-3">
-                <h3>Listing details of: <%= listing.title %>
+        <div class="container px-2">
+
+            <div class="col-12 text-center">
+                <h3>
+                    <%= listing.title %>
                 </h3>
             </div>
 
             <!-- image -->
-            <div class="card col-6 offset-3 show-card">
-                <img src="<%= listing.image.url  %>" class="card-img-top show-img" alt="listing_img">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto show-card mb-4">
+                <img src="<%= listing.image.url  %>" class="card-img-top img-fluid show-img" alt="listing_img">
 
                 <!-- info -->
                 <div class="card-body">
-                    <h5 class="card-title">
+                    <h5 class="card-title mt-4">
                         <%= listing.title %>
                     </h5>
                     <p class="card-text">
@@ -31,7 +33,7 @@
 
             <!-- listing edit btn -->
             <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
-                <div class="btns mb-5 offset-3">
+                <div class="d-flex justify-content-start mb-5 col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
                     <a class="btn btn-primary edit-btn col-2" href="/listings/<%= listing._id %>/edit">Edit</a>
                     <form method="post" action="/listings/<%= listing._id  %>?_method=DELETE">
                         <button class="btn btn-dark offset-5">Delete</button>
@@ -41,22 +43,17 @@
                 <% } %>
 
                     <!-- add review form -->
-                    <div class="col-8 offset-3 mb-3">
+                    <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto mb-3 review-form">
                         <% if(currUser){ %>
                             <form method="post" action="/listings/<%=listing._id%>/reviews" novalidate
                                 class="needs-validation">
-                                <div class="mb-3 mt-3">
 
-                                    <!-- review stars -->
-                                    <label for="How would you rate your
-                                            experience?" class="form-label ">
-                                        <h3>How would you rate your
-                                            experience?</h3>
+                                <!-- review stars -->
+                                <div class="mb-3 mt-3 ">
+                                    <label class="form-label">
+                                        <h3>How would you rate your experience?</h3>
                                     </label>
-
-                                    <!-- strability github -->
                                     <fieldset class="starability-grow">
-
                                         <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]"
                                             value="1" checked aria-label="No rating." />
                                         <input type="radio" id="first-rate1" name="review[rating]" value="1" />
@@ -70,19 +67,16 @@
                                         <input type="radio" id="first-rate5" name="review[rating]" value="5" />
                                         <label for="first-rate5" title="Amazing">5 stars</label>
                                     </fieldset>
-
-
                                 </div>
 
                                 <!-- comment box -->
                                 <div class="mb-3 mt-3">
                                     <label for="comment" class="form-label">
-                                        <h4>Share your experience in a few
-                                            words:</h4>
+                                        <h4>Share your experience in a few words:</h4>
                                     </label>
                                     <textarea name="review[comment]" id="comment" cols="30" rows="5"
                                         class="form-control" required></textarea>
-                                    <div class="invalid-feedback">please add some text</div>
+                                    <div class="invalid-feedback">Please add some text</div>
                                 </div>
 
                                 <!-- submit review -->
@@ -92,33 +86,42 @@
                             <% } %>
                     </div>
 
-                    <!-- show all reviews -->
-                    <div class="col-8 offset-3 mb-3">
-                        <h4><b>All Reviews</b></h4>
-                        <div class="row">
+
+                    <!-- All Reviews -->
+                    <div class="col-12 col-sm-10 col-md-6 col-lg-6 mx-auto mb-2">
+                        <h5 class="mb-2"><b>All Reviews</b></h5>
+                        <div class="row g-2"> <!-- minimal gap -->
                             <% for(let review of listing.reviews) { %>
-                                <div class="card col-5 ms-3 mb-3 review-card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            @<%= review.author ? review.author.username : 'Unknown' %>
-                                        </h5>
+                                <div class="col-12 col-md-6">
+                                    <div class="card review-card h-100 mb-2">
+                                        <div class="card-body p-2">
+                                            <h6 class="card-title mb-1">@<%= review.author ? review.author.username
+                                                    : 'Unknown' %>
+                                            </h6>
 
-                                        <!-- static review result stars -->
-                                        <p class="starability-result" data-rating=<%=review.rating %>>
-                                        </p>
-                                        <p class="card-text"><i><b>"<%= review.comment %>"</b></i></p>
+                                            <!-- stars -->
+                                            <p class="starability-result mb-1" data-rating=<%=review.rating %>></p>
+
+                                            <!-- comment -->
+                                            <p class="card-text mb-1"><i>"<%= review.comment %>"</i></p>
+
+                                            <!-- delete button -->
+                                            <% if(currUser && review.author && currUser._id.equals(review.author._id)) {
+                                                %>
+                                                <div class="text-start">
+                                                    <form method="post"
+                                                        action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                                                        <button class="btn btn-sm btn-outline-dark">Delete</button>
+                                                    </form>
+                                                </div>
+                                                <% } %>
+                                        </div>
                                     </div>
-
-                                    <!-- delete review (only if author matches current user) -->
-                                    <% if(currUser && review.author && currUser._id.equals(review.author._id)) { %>
-                                        <form class="mb-3 offset-1" method="post"
-                                            action="/listings/<%= listing._id %>/reviews/<%= review._id  %>?_method=DELETE">
-                                            <button class="btn btn-sm btn-outline-dark">Delete</button>
-                                        </form>
-                                        <% } %>
                                 </div>
                                 <% } %>
                         </div>
                     </div>
+
+
         </div>
     </body>
