@@ -286,27 +286,30 @@ h3 {
     margin-left: auto;
 }
 
-.search-form {
-    width: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.search-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
 }
 
 .search-input {
     width: 100%;
     height: 46px;
-    padding-right: 100px;
     border-radius: 25px;
     font-size: 1rem;
+    padding-right: 40px;
 }
 
 .search-btn {
-    background-color: #fe424d;
-    height: 40px;
-    width: 40px;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 36px;
+    width: 36px;
     border-radius: 50%;
     border: none;
+    background-color: #fe424d;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -315,6 +318,15 @@ h3 {
 .search-btn i {
     color: white;
 }
+
+@media (min-width: 992px) {
+    .search-btn {
+        right: 12px;
+        max-width: 800px;
+    }
+}
+
+
 
 .navbar {
     padding-top: 0.2rem !important;
