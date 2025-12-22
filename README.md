@@ -26,11 +26,6 @@ A **full-stack travel listing platform** built with EJS, Express & MongoDB, allo
 
 ---
 
-## 💻 Code
-[Wanderlust](https://github.com/AnuragGhutke/wanderlust/tree/main)
-
----
-
 ## ✨ Key Learnings
 - Implemented **MongoDB relationships** between users, destinations, and reviews
 - Practiced **middleware & authentication** in Express
