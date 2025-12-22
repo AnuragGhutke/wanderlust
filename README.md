@@ -31,13 +31,6 @@ A **full-stack travel listing platform** built with EJS, Express & MongoDB, allo
 
 ---
 
-## 📌 Screenshots
-![Home](link-to-screenshot-1)
-![Destination Page](link-to-screenshot-2)
-![Reviews](link-to-screenshot-3)
-
----
-
 ## ✨ Key Learnings
 - Implemented **MongoDB relationships** between users, destinations, and reviews
 - Practiced **middleware & authentication** in Express
