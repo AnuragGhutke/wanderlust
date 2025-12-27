@@ -24,7 +24,8 @@ const ExpressError = require('./utils/expressErrors.js');
 const User = require('./models/User.js')
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
+app.set('trust proxy', 1);
 
 //connecting to MongoDB
 const dbUrl = process.env.ATLAS_URL;
@@ -61,7 +62,7 @@ store.on('error', () => {
 
 //express-session
 const sessionOptions = {
-    store,//store=store
+    store,
     secret: process.env.secret,
     resave: false,
     saveUninitialized: true,
